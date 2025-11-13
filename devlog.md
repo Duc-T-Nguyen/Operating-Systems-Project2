@@ -5,4 +5,4 @@ Session 2: 11-12-2025
 - taking a break to think about the conditions and how to display them. i already have the ones up to entering the safe and doing the transaction 
 - started work again on the teller file to finish up the conditions for entering the safe 
 - started work on the customer.py by just initializing the variables. Will have to work on the run function and other sub function tomorrow
-
+- created a function to generate at random the customer transactioin type and amount
