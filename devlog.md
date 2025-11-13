@@ -6,3 +6,5 @@ Session 2: 11-12-2025
 - started work again on the teller file to finish up the conditions for entering the safe 
 - started work on the customer.py by just initializing the variables. Will have to work on the run function and other sub function tomorrow
 - created a function to generate at random the customer transactioin type and amount
+Session 3: 11-13-2025
+- finished up work on the customerpy to generate a random transaction action and amount and then put it through the process of getting to a teller and preforming the action 
