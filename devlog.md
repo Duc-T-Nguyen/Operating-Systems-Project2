@@ -14,4 +14,7 @@ Session 3: 11-13-2025
 - had a error where i accidently put in the shared "teller" instead of "Teller"
 - decided to change the assign method in customer that I had set up previously to just manually do it 
 - intially didn't have a way to assign tellers outside of 0 but I added a available category on the shared and added a append on the teller.py the various tellers and then extract a teller from the array on the customer.py
+Session 4: 11-14-2025
+- taking a final look at the program and cleaning up example files
+- made some changes to the customer.py format 
 

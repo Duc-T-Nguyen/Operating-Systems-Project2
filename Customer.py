@@ -33,9 +33,10 @@ class Customer(threading.Thread):
     def determine_transaction(self):
         self.transaction_type = random.choice(['Deposit','Withdraw'])
         self.transaction_amount = random.randint(10,5000)
-        print(f'Customer {self.customerid} wants to conduct a {self.transaction_type} for {self.transaction_amount}')                       
+        print(f'Customer {self.customerid} wants to conduct a {self.transaction_type}  transaction')                       
     def enter(self):
-        print(f'Customer {self.customerid}: entering the bank')
+        print(f'Customer {self.customerid} []: going to bank door')
+        print(f'Customer {self.customerid} []: entering the bank')
         self.door.acquire()
     def get_teller(self):
         print(f'Customer {self.customerid}: gets into line for Teller ')   
