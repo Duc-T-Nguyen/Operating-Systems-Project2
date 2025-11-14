@@ -22,7 +22,7 @@ class Customer(threading.Thread):
         self.get_teller()
         print(f'Customer {self.customerid} [Teller {self.current_teller.tellerid}]: Introduces itself to the bank teller')
         self.current_teller.customer_approach.release()
-        action_type = "Withdraw" if self.transaction_type == "Withdraw" else "deposit"
+        action_type = "withdraw" if self.transaction_type == "Withdraw" else "deposit"
         print(f'Customer {self.customerid} [Teller {self.current_teller.tellerid}]: requests {action_type} transaction')
         self.current_teller.transaction_received.release()
         self.current_teller.transaction_complete.acquire()
@@ -41,11 +41,12 @@ class Customer(threading.Thread):
         print(f'Customer {self.customerid}: gets into line for Teller ')   
         self.teller_ready.acquire()
         with self.shared['lock']:
-            for tellerid, teller in self.shared['tellers'].items():
-                self.current_teller = teller
-                break
+            tellerid = self.shared['available'].pop(0)
+            self.current_teller=self.shared['Tellers'][tellerid]
+        
         transaction = {'type': self.transaction_type, 'amount': self.transaction_amount}
-        self.current_teller.assign_customer(self.customerid, transaction)
+        self.current_teller.current_id =self.customerid
+        self.current_teller.current_transaction=transaction
         print(f'Customer {self.customerid}: goes to Teller {self.current_teller.tellerid}')
     def leave(self):
         print(f'Customer {self.customerid}: leaving the Teller and the bank ')

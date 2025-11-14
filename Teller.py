@@ -19,9 +19,11 @@ class Teller(threading.Thread):
         while True:
             print(f'Teller {self.tellerid} []: ready to serve')
             print(f'Teller {self.tellerid } []: waiting for a customer')
+            with self.shared['lock']:
+                self.shared['available'].append(self.tellerid)
             self.shared['teller_ready'].release()
             if not self.customer_approach.acquire(timeout=0.1):
-                if self.shared['done']:
+                if self.shared['all_served']:
                     break
                 continue
             cid = self.current_id
