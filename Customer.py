@@ -28,18 +28,18 @@ class Customer(threading.Thread):
         self.current_teller.transaction_complete.acquire()
         print(f"Customer {self.customerid} [Teller {self.current_teller.tellerid}]:the transaction was completed")
         self.leave()
-        print(f"Customer {self.customerid} has left the bank")
+        print(f"Customer {self.customerid} []: has left the bank")
         
     def determine_transaction(self):
         self.transaction_type = random.choice(['Deposit','Withdraw'])
         self.transaction_amount = random.randint(10,5000)
-        print(f'Customer {self.customerid} wants to conduct a {self.transaction_type}  transaction')                       
+        print(f'Customer {self.customerid} []: wants to conduct a {self.transaction_type}  transaction')                       
     def enter(self):
         print(f'Customer {self.customerid} []: going to bank door')
         print(f'Customer {self.customerid} []: entering the bank')
         self.door.acquire()
     def get_teller(self):
-        print(f'Customer {self.customerid}: gets into line for Teller ')   
+        print(f'Customer {self.customerid} []: gets into line for Teller ')   
         self.teller_ready.acquire()
         with self.shared['lock']:
             tellerid = self.shared['available'].pop(0)
@@ -48,8 +48,8 @@ class Customer(threading.Thread):
         transaction = {'type': self.transaction_type, 'amount': self.transaction_amount}
         self.current_teller.current_id =self.customerid
         self.current_teller.current_transaction=transaction
-        print(f'Customer {self.customerid}: goes to Teller {self.current_teller.tellerid}')
+        print(f'Customer {self.customerid} []: goes to Teller {self.current_teller.tellerid}')
     def leave(self):
-        print(f'Customer {self.customerid}: leaving the Teller and the bank ')
+        print(f'Customer {self.customerid} []: leaving the Teller and the bank ')
         self.current_teller.customer_left.release()
         self.door.release()
