@@ -19,4 +19,6 @@ Session 4: 11-14-2025
 - made some changes to the customer.py format 
 Session 4: 11-15-2025
 - made some formatting changes to follow the project requirements in the Customer.py for leaving bank, getting into line, going to a teller, and leaving the bank
+Session 5: 11-16-2025
+-created readme file
 

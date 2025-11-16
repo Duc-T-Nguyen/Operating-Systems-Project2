@@ -1,0 +1,16 @@
+-Roles of the Files:
+-Customer.py:
+-creates a Customer in the bank simulation and randomly decides if the customer is going to withdraw or deposit and how much is in their bank transaction
+-after the customer is created it had function to enter the bank, gets a random teller from current available tellers, and then leaves the bank (these actions are found in the enter(), get_teller, and leave function repsectively)
+-Teller.py:
+-creates a Teller in the bank simulation
+-the teller has only a run() function to simulate interacting with the customer processing the transaction. The teller will always try to enter the safe to process the transaction and has a if statement to add a extra time to ask permission from the manager resource in processing withdraws from the account
+-Main.py:
+-core of the program that determines how many tellers and customers and creates a shared resource that the customer and tellers use to run in the bank simulation
+-after the tellers and customers are created from iterating through them in their respective for loops it will wait for them to complete and set a signal for the tellers that all the work is done 
+-they will then be joined together again and a summary will be printed out of the number of tellers and customers were in the simulation
+-How to run the program:
+-If you have mac:
+-run the program by using: python3 main.py
+-Other devices:
+-run the program using: python main.py
